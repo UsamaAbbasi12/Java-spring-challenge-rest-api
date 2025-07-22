@@ -31,13 +31,34 @@ public class ChallengeService {
     public Challenge getChallenge(String month) {
 
         for(Challenge challenge: challenges){
-            if(challenge.getMonth().equals(month)){
+            if(challenge.getMonth().equalsIgnoreCase(month)){
                 return  challenge;
             }
 
 
         }
         return  null;
+
+    }
+
+    public boolean updateChallenge(Long id, Challenge updateChallengeData) {
+        for(Challenge challenge: challenges){
+            if(challenge.getId().equals(id)){
+                challenge.setMonth(updateChallengeData.getMonth());
+                challenge.setName(updateChallengeData.getName());
+                return  true;
+            }
+            else {
+                return false;
+            }
+
+
+        }
+        return  false;
+    }
+
+    public boolean deleteChallenge(Long id) {
+      return challenges.removeIf(challenge -> challenge.getId().equals(id));
 
     }
 }
