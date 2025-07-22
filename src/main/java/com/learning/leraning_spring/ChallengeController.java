@@ -41,6 +41,7 @@ public class ChallengeController {
     public ResponseEntity<Challenge> getChallenge(@PathVariable  String month){
         Challenge challenge =   challengeService.getChallenge(month);
         if(challenge != null){
+
             return new ResponseEntity<>(challenge, HttpStatus.OK);
         }
         else{
